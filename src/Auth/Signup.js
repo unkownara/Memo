@@ -72,10 +72,11 @@ class Signup extends Component {
                 email_id: this.state.email_id,
                 phone_number: this.state.phone_number,
                 gender: this.state.gender,
-                birth_day: "",
+                birth_day: " ",
                 city: this.state.city
             };
             import('../APICalls/AuthAPI').then(obj => {
+                console.log('store user information in dynamo db');
                 obj.storeUserInformation(user_info);
             })
         }).catch(err => {
