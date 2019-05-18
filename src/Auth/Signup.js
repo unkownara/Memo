@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Auth} from 'aws-amplify';
+import ConfirmSignup from './ConfirmSignup';
 
 class Signup extends Component {
 
@@ -11,7 +12,9 @@ class Signup extends Component {
             password: "",
             phone_number: "",
             gender: "",
-            city: ""
+            city: "",
+            otp: "",
+            is_otp_sent: false
         };
     }
 
@@ -52,7 +55,6 @@ class Signup extends Component {
     };
 
     initiateSignup = () => {
-        console.log('inside');
         Auth.signUp({
             username: this.state.email_id,
             password: this.state.password,
@@ -76,25 +78,52 @@ class Signup extends Component {
                 city: this.state.city
             };
             import('../APICalls/AuthAPI').then(obj => {
-                console.log('store user information in dynamo db');
                 obj.storeUserInformation(user_info);
+                this.setState({
+                    is_otp_sent: true
+                });
             })
         }).catch(err => {
             console.log('Failure response ', err);
         });
     };
 
+    getOtpValue = (code) => {
+        this.setState({
+            otp : code
+        })
+    };
+
+    confirmSignup = () => {
+        console.log('verification ', this.state.email_id, this.state.otp);
+        Auth.confirmSignUp(this.state.email_id, this.state.otp, {
+            forceAliasCreation: true
+        }).then(res => {
+            console.log("success ", res);
+        }).catch(err => console.log(err));
+    };
+
+
     render() {
         return (
-            <div>
-                <input type="text" onChange={this.getUserName}/>
-                <input type="text" onChange={this.getUserEmailId}/>
-                <input type="text" onChange={this.getUserPassword}/>
-                <input type="number" onChange={this.getUserPhoneNumber}/>
-                <input type="text" onChange={this.getUserGender}/>
-                <input type="text" onChange={this.getUserCity}/>
-                <button onClick={this.initiateSignup}> Signup</button>
-            </div>
+            <React.Fragment>
+                {!this.state.is_otp_sent ?
+                    <div>
+                        <input type="text" onChange={this.getUserName}/>
+                        <input type="text" onChange={this.getUserEmailId}/>
+                        <input type="text" onChange={this.getUserPassword}/>
+                        <input type="number" onChange={this.getUserPhoneNumber}/>
+                        <input type="text" onChange={this.getUserGender}/>
+                        <input type="text" onChange={this.getUserCity}/>
+                        <button onClick={this.initiateSignup}> Signup</button>
+                    </div>
+                    :
+                    <div>
+                        <ConfirmSignup getOtpValue={this.getOtpValue}/>
+                        <button onClick={this.confirmSignup}> Confirm Signup</button>
+                    </div>
+                }
+            </React.Fragment>
         );
     }
 }
