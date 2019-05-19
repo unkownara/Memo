@@ -1,5 +1,6 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
+import history from '../history';
 import {user_info_url} from './URLs';
 import {storeUserSignInResponse, storeUserInformationInLocal} from '../Actions/Auth';
 
@@ -42,6 +43,7 @@ export function getUserInformation(u_id) {
             res: res.data.Items[0]
         };
         storeUserInformationInLocal(resObj);
+        history.push('/home');
     }).catch(err => {
         console.log('Error ', err);
         resObj = {
