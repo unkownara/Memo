@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Auth} from 'aws-amplify';
+import {connect} from 'react-redux';
 import cookie from 'react-cookies';
 import history from '../history';
+import {getUserInformation} from '../Actions/Auth';
 
 class Login extends Component {
 
@@ -36,10 +38,7 @@ class Login extends Component {
                 cookie.save("_ref_i_token_", jwt_token, {path: '/'});
                 cookie.save("_u_id_", u_id, {path: '/'});
 
-                import('../APICalls/AuthAPI').then(obj => {
-                   obj.getUserInformation(u_id);
-                });
-
+                this.props.getUserInformation(u_id);
             }).catch(err => {
             console.log('Oops something error ', err);
         })
@@ -61,4 +60,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default connect(null, {getUserInformation})(Login);

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Auth} from 'aws-amplify';
+import {connect} from 'react-redux';
 import ConfirmSignup from './ConfirmSignup';
+import {storeUserInformation} from '../Actions/Auth';
 
 class Signup extends Component {
 
@@ -77,12 +79,10 @@ class Signup extends Component {
                 birth_day: " ",
                 city: this.state.city
             };
-            import('../APICalls/AuthAPI').then(obj => {
-                obj.storeUserInformation(user_info);
-                this.setState({
-                    is_otp_sent: true
-                });
-            })
+            this.props.storeUserInformation(user_info);
+            this.setState({
+                is_otp_sent: true
+            });
         }).catch(err => {
             console.log('Failure response ', err);
         });
@@ -90,7 +90,7 @@ class Signup extends Component {
 
     getOtpValue = (code) => {
         this.setState({
-            otp : code
+            otp: code
         })
     };
 
@@ -128,4 +128,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default connect(null, {storeUserInformation})(Signup);

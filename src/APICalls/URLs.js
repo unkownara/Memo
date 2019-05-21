@@ -4,3 +4,6 @@
 */
 
 export const user_info_url = "https://bq45vd0lqj.execute-api.us-east-2.amazonaws.com/beta/user-info";
+export const group_url = "https://bq45vd0lqj.execute-api.us-east-2.amazonaws.com/beta/group-info";
+export const user_search_url = "";
+export const user_group_list_url = "https://bq45vd0lqj.execute-api.us-east-2.amazonaws.com/beta/user-group-list";
