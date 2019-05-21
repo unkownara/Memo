@@ -25,3 +25,10 @@ export function generateJSONObject(groups) {
     }
     return group_list;
 }
+
+/* Generate random key value
+*/
+export function generateRandomKeyValue() {
+	let uuid = require('uuid');
+	return uuid();
+}
