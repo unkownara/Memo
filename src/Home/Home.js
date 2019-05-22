@@ -80,7 +80,7 @@ class Home extends Component {
 				group_id: group_id,
 				group_name: this.state.group_name,
 				group_members: this.state.group_members,
-				bucket_name: this.props.user_info.state + "_" + this.props.user_info.city + "_" + this.state.group_name
+				bucket_location: `group-memory-${this.props.user_info.country}/ + ${group_id + "-" + this.props.user_info.state + "-" + this.props.user_info.city + "-" + this.state.group_name}`
 			};
 			let userInfo = {
 				admin_user_id: this.props.user_info.user_id,
