@@ -1,6 +1,21 @@
 import React, {Component} from 'react';
 import AWS from 'aws-sdk';
 import VideoThumbnail from 'react-video-thumbnail';
+import cookie from 'react-cookies';
+
+AWS.config.update({
+	region: 'us-east-2',
+	credentials: new AWS.CognitoIdentityCredentials({
+		IdentityPoolId: 'us-east-2:114e90ce-6087-4de6-a130-5445f6a97e1b',
+		Logins: {
+			'cognito-idp.us-east-2.amazonaws.com/us-east-2_V4Riy4Izt': cookie.load('_ref_i_token_')
+		}
+	})
+});
+
+AWS.Config.httpOptions = {
+	timeout: 0
+};
 
 class PostUploader extends Component {
 
@@ -23,7 +38,7 @@ class PostUploader extends Component {
 			partSize: 5 * 1024 * 1024,
 			queueSize: 1,
 			params: {
-				Bucket: '', // state-district-group_name
+				Bucket: 'group-memory-india/tamilnadu-coimbatore-abde', // state-district-group_name
 				Key: key,
 				ACL: 'public-read',
 				ContentType: file.type,
@@ -123,7 +138,9 @@ class PostUploader extends Component {
 		import('../Generics/Common').then(obj => {
 			u_key = obj.generateRandomKeyValue();
 		});
-		this.imagePostUpload(u_key);
+		let u_id = this.props.user_info.user_id;
+		let file = this.state.file[0];
+		this.imagePostUpload(u_key, u_id, file);
 	};
 
 	render() {

@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {groupCreation, userGroupList, addNewGroupInLocalStore} from '../Actions/Home';
 import {reStoreUserInfoInReduxState} from '../Actions/Auth';
 import {getUserInformation} from '../Actions/Auth';
+
 const PostUploader = React.lazy(() => import('./PostUploader'));
 
 class Home extends Component {
@@ -28,7 +29,7 @@ class Home extends Component {
 					let user_group_list = this.props.user_info.groups;
 					let u_group_list = obj.generateJSONObject(user_group_list);
 					let groups = {
-						"groups" : u_group_list
+						"groups": u_group_list
 					};
 					this.props.userGroupList(groups);
 				});
@@ -38,7 +39,7 @@ class Home extends Component {
 					let user_group_list = this.props.user_info.groups;
 					let u_group_list = obj.generateJSONObject(user_group_list);
 					let groups = {
-						"groups" : u_group_list
+						"groups": u_group_list
 					};
 					this.props.userGroupList(groups);
 				});
@@ -78,11 +79,14 @@ class Home extends Component {
 			let groupInfo = {
 				group_id: group_id,
 				group_name: this.state.group_name,
-				group_members: this.state.group_members
+				group_members: this.state.group_members,
+				bucket_location: `group-memory-${this.props.user_info.country}/ + ${group_id + "-" + this.props.user_info.state + "-" + this.props.user_info.city + "-" + this.state.group_name}`
 			};
 			let userInfo = {
 				admin_user_id: this.props.user_info.user_id,
-				user_groups: user_groups
+				user_groups: user_groups,
+				state: this.props.user_info.state,
+				district: this.props.user_info.district
 			};
 			this.props.groupCreation(userInfo, groupInfo);
 			let newGroupInfo = {
@@ -96,15 +100,19 @@ class Home extends Component {
 	};
 
 	render() {
-		return (
-			<div>
-				<input type="text" onChange={this.groupName}/>
-				<input type="text" onChange={this.searchUser}/>
-				<button onClick={() => this.addUsers}> add</button>
-				<button onClick={this.createGroup}> Create</button>
-                <PostUploader />
-			</div>
-		);
+		if (this.props.user_info === null || this.props.user_info.user_id === undefined) {
+			return <div> Loading </div>
+		} else {
+			return (
+				<div>
+					<input type="text" onChange={this.groupName}/>
+					<input type="text" onChange={this.searchUser}/>
+					<button onClick={() => this.addUsers}> add</button>
+					<button onClick={this.createGroup}> Create</button>
+					<PostUploader user_info={this.props.user_info}/>
+				</div>
+			);
+		}
 	}
 }
 
