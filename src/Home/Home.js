@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {groupCreation, userGroupList, addNewGroupInLocalStore} from '../Actions/Home';
 import {reStoreUserInfoInReduxState} from '../Actions/Auth';
 import {getUserInformation} from '../Actions/Auth';
+const PostUploader = React.lazy(() => import('./PostUploader'));
 
 class Home extends Component {
 
@@ -104,6 +105,7 @@ class Home extends Component {
 				<input type="text" onChange={this.searchUser}/>
 				<button onClick={() => this.addUsers}> add</button>
 				<button onClick={this.createGroup}> Create</button>
+                <PostUploader />
 			</div>
 		);
 	}
