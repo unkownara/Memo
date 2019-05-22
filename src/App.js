@@ -5,6 +5,7 @@ import history from './history';
 const Login = React.lazy(() => import('./Auth/Login'));
 const Signup = React.lazy(() => import('./Auth/Signup'));
 const Home = React.lazy(() => import('./Home/Home'));
+const AuthLogin = React.lazy(() => import('./Authentication/login'));
 const ForgotPassword = React.lazy(() => import('./Auth/ForgotPassword'));
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
                         <Route
                             exact
                             path="/"
-                            component={Login}
+                            component={AuthLogin}
                         />
                         <Route
                             path="/signup"

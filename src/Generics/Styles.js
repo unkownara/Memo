@@ -101,12 +101,15 @@ export const SmallInput = styled.input`
 	border: ${props => props.border || "none"};
 `;
 
-export const MediumInput = styled.input`
+const MediumInput = styled.input`
 	max-height: 50px;
 	max-width: 200px;
 	padding: ${props => props.padding || "4px"};
-	border: ${props => props.border || "none"};
+	border: ${props => props.border || "none"}; 
 `;
+
+export default MediumInput;
+
 
 export const LargeInput = styled.input`
 	max-height: 50px;
