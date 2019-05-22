@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {groupCreation, userGroupList, addNewGroupInLocalStore} from '../Actions/Home';
 import {reStoreUserInfoInReduxState} from '../Actions/Auth';
 import {getUserInformation} from '../Actions/Auth';
+
 const PostUploader = React.lazy(() => import('./PostUploader'));
 
 class Home extends Component {
@@ -28,7 +29,7 @@ class Home extends Component {
 					let user_group_list = this.props.user_info.groups;
 					let u_group_list = obj.generateJSONObject(user_group_list);
 					let groups = {
-						"groups" : u_group_list
+						"groups": u_group_list
 					};
 					this.props.userGroupList(groups);
 				});
@@ -38,7 +39,7 @@ class Home extends Component {
 					let user_group_list = this.props.user_info.groups;
 					let u_group_list = obj.generateJSONObject(user_group_list);
 					let groups = {
-						"groups" : u_group_list
+						"groups": u_group_list
 					};
 					this.props.userGroupList(groups);
 				});
@@ -99,15 +100,19 @@ class Home extends Component {
 	};
 
 	render() {
-		return (
-			<div>
-				<input type="text" onChange={this.groupName}/>
-				<input type="text" onChange={this.searchUser}/>
-				<button onClick={() => this.addUsers}> add</button>
-				<button onClick={this.createGroup}> Create</button>
-                <PostUploader />
-			</div>
-		);
+		if (this.props.user_info === null || this.props.user_info.user_id === undefined) {
+			return <div> Loading </div>
+		} else {
+			return (
+				<div>
+					<input type="text" onChange={this.groupName}/>
+					<input type="text" onChange={this.searchUser}/>
+					<button onClick={() => this.addUsers}> add</button>
+					<button onClick={this.createGroup}> Create</button>
+					<PostUploader user_info={this.props.user_info}/>
+				</div>
+			);
+		}
 	}
 }
 
