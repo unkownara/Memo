@@ -77,11 +77,14 @@ class Home extends Component {
 			let groupInfo = {
 				group_id: group_id,
 				group_name: this.state.group_name,
-				group_members: this.state.group_members
+				group_members: this.state.group_members,
+				bucket_name: this.props.user_info.state + "_" + this.props.user_info.city + "_" + this.state.group_name
 			};
 			let userInfo = {
 				admin_user_id: this.props.user_info.user_id,
-				user_groups: user_groups
+				user_groups: user_groups,
+				state: this.props.user_info.state,
+				district: this.props.user_info.district
 			};
 			this.props.groupCreation(userInfo, groupInfo);
 			let newGroupInfo = {
