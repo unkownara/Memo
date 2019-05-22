@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import AWS from 'aws-sdk';
+import VideoThumbnail from 'react-video-thumbnail';
 
 class PostUploader extends Component {
 
 	state = {
-		file: []
+		file: [],
+		video_thumbnail: ""
 	};
 
 	selectItem = (e) => {
@@ -110,6 +112,12 @@ class PostUploader extends Component {
 		// });
 	};
 
+	thumbnailGeneration = (thumbnail) => {
+		this.setState({
+			video_thumbnail : thumbnail
+		})
+	};
+
 	uploadItems = () => {
 		let u_key = "";
 		import('../Generics/Common').then(obj => {
@@ -122,6 +130,14 @@ class PostUploader extends Component {
 		return (
 			<div>
 				<input type="file" onChange={this.selectItem}/>
+				<VideoThumbnail
+					videoUrl={this.state.file.length > 0 ? this.state.file[0] : ""}
+					renderThumbnail={false}
+					snapshotAtTime={2}
+					thumbnailHandler={(thumbnail) => this.thumbnailGeneration(thumbnail)}
+					width={460}
+					height={340}
+				/>
 				<button onClick={this.uploadItems}> upload</button>
 			</div>
 		);
