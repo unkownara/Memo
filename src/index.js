@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 import AWSCredentials from './AWSCredentials';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AuthLogin from './Authentication/login';
 
 Amplify.configure({
     Auth: {
@@ -18,6 +18,6 @@ Amplify.configure({
     }
 });
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AuthLogin />, document.getElementById('root'));
 
 serviceWorker.unregister();
