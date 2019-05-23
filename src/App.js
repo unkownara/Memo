@@ -1,6 +1,8 @@
 import React from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import history from './history';
+
+import ClubCards from './ClubCards/ClubCards';
 
 const Login = React.lazy(() => import('./Auth/Login'));
 const Signup = React.lazy(() => import('./Auth/Signup'));
@@ -17,7 +19,7 @@ function App() {
                         <Route
                             exact
                             path="/"
-                            component={AuthLogin}
+                            component={Login}
                         />
                         <Route
                             path="/signup"
@@ -31,6 +33,11 @@ function App() {
                             exact
                             path="/home"
                             component={Home}
+                        />
+                        <Route
+                            exact
+                            path="/clubs"
+                            component={ClubCards}
                         />
                     </Switch>
                 </Router>
