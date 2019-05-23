@@ -1,6 +1,7 @@
 import React from 'react';
 import NewPassword from './newpass.js';
 import LoginPage from './loginpage.js';
+import { LargeInput, H2, MediumPrimaryButton, P5, H6 } from '../Generics/Styles';
 
 class Forgot extends React.Component {
 
@@ -22,7 +23,7 @@ class Forgot extends React.Component {
 
   // Change The Page
 
-  login = () => {
+  register = () => {
     this.setState({
       change: false,
       changeNewPassword: true
@@ -35,7 +36,7 @@ class Forgot extends React.Component {
 
     let formIsValid = true;
     let forgotEmailValue = this.state.forgotEmailValue;
-    
+
     // Email Checking
 
     if (!forgotEmailValue) {
@@ -57,11 +58,10 @@ class Forgot extends React.Component {
   // Form Submission
 
   Submit = (e) => {
-    
+
     e.preventDefault();
     if (this.validateForm()) {
       let forgotValue = '';
-      alert(this.state.forgotEmailValue)
       this.setState({
         forgotEmailValue: forgotValue,
         changeNewPassword: false,
@@ -82,14 +82,15 @@ class Forgot extends React.Component {
             {/* Heading And Sub-Heading */}
 
             <div className="paragraphContent">
-              <p className="heading">Forgot Your Password</p>
-              <p className="subHeading" >Verify your email id</p>
+              <H2 className="heading">Forgot Your Password</H2>
+              <H6 className="subHeading" >Verify your email id</H6>
             </div>
 
             {/* Forgot input Box */}
+
             <form onSubmit={this.Submit}>
               <div className="forgotInputBoxDiv">
-                <input type="text"
+                <LargeInput type="text"
                   className="email"
                   value={this.state.forgotValue}
                   placeholder="Email"
@@ -99,17 +100,21 @@ class Forgot extends React.Component {
               {/* Form Submit button And Paragraph  */}
 
               <div className="submitButtonDiv">
-                <button onClick={this.Submit}
-                  type="submit"
+                <MediumPrimaryButton height="50px"
+                  width="200px"
+                  onClick={this.Submit}
+                  type="button"
                   className="submit">
                   Verify email
-              </button>
-                <p className="para">
+                </MediumPrimaryButton>
+              </div>
+              <div className="Paragraph">
+                <P5 className="para">
                   Remember your password?
-              <span onClick={this.login}>
-                    Login
-              </span>
-                </p>
+                </P5>
+                <H6 className="h6" onClick={this.register}>
+                  Login
+                  </H6>
               </div>
             </form>
           </div>) :
