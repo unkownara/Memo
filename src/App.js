@@ -17,7 +17,7 @@ function App() {
                         <Route
                             exact
                             path="/"
-                            component={AuthLogin}
+                            component={Login}
                         />
                         <Route
                             path="/signup"

@@ -7,6 +7,7 @@
     "aws-sdk": "^2.363.0",
     "axios": "^0.18.0",
     "browser-image-compression": "^1.0.2",
+    "crypto": "^1.0.1",
     "history": "^4.9.0",
     "react": "^16.8.6",
     "react-cookies": "^0.1.0",

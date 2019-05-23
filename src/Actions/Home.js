@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
-import {group_url, user_group_list_url} from "../APICalls/URLs";
+import {group_url, user_group_list_url, user_info_url, user_search_url} from "../APICalls/URLs";
+import history from "../history";
 
 export function groupCreation(user_info, group_info) {
 	return dispatch => {
@@ -56,6 +57,10 @@ export function userGroupList(u_group_list) {
 				type: "user_group_list_response",
 				payload: res
 			});
+			/*
+				_u_g_ls -> User group list
+			 */
+			localStorage.setItem('_u_g_ls', JSON.stringify(res.data));
 		}).catch(err => {
 			console.log('Error ', err);
 			resObj = {
