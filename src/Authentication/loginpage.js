@@ -168,6 +168,7 @@ class LoginPage extends React.Component {
                             </div>
                         
                             <P5 className="forgotSpan" onClick={this.forgotPassword}>forgot Password?</P5>
+                            
                             {/* submit form button */}
 
                             <div className="paraAndButton">

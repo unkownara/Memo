@@ -1,9 +1,5 @@
  /* login design */
 
-  .eamil:invalid {
-    border: 1px solid red;
-  }
-
   .login {
     display: grid;
     grid-template-columns: repeat(2,1fr); 
@@ -183,10 +179,10 @@
   .genderDiv {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    padding: 40px 0 30px 0;
-    grid-gap: 20px;
-    
+    padding: 30px 0 30px 0;
+    grid-gap: 20px;  
   }
+
   .Image{
     position: absolute;
     right: 0;
@@ -194,37 +190,19 @@
   }
   .P3{
     margin: 0 auto;
+    padding-left: 15px;
   }
-  .male{
+  .P3Female{
+    padding-left: 20px;
+  }
+  .gender{
     position: relative;
-    border: 1px solid gray;
-    background-color: transparent ;
-    text-align: center;
-    padding: 8px;
+    border-radius: 5px;
+    padding: 7px;
     cursor: pointer;
-    transition: 0.3s;
     outline: none;
   }
-  .female{
-    position: relative;
-    border: 1px solid gray;
-    background: white;
-    text-align: center;
-    padding: 8px ;
-    cursor: pointer;
-    transition: 0.3s;
-    outline: none;
-  }
-  .other{
-    position: relative;
-    border: 1px solid gray;
-    background: white;
-    text-align: center;
-    padding: 8px ;
-    cursor: pointer;
-    transition: 0.3s;
-    outline: none;
-  }
+
   label {
     padding: 0 0 0 5px;
     font-size: 20px;
