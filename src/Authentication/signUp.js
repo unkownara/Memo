@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginPage from './loginpage.js'
 import { Dropdown, Icon } from 'semantic-ui-react';
+import _ from 'lodash';
 import { LargeInput, H2, MediumPrimaryButton, P5, H6, P3 } from '../Generics/Styles';
 
 const cityOptions = [
@@ -16,6 +17,25 @@ const countryOptions = [
     { key: '3', value: 'pakistan', flag: 'al', text: 'pakistan' },
     { key: '4', value: 'bangladesh', flag: 'dz', text: 'bangladesh' },
 ]
+const getDay = (number, prefix = 'Choice ') =>
+    _.times(number, index => ({
+        key: index,
+        text: `${index + 1}`,
+        value: index,
+    }))
+const getMonth = (number, prefix = 'Choice ') =>
+    _.times(number, index => ({
+        key: index,
+        text: `${index + 1}`,
+        value: index,
+    }))
+
+const getYear = (number, prefix = '2019 ') =>
+    _.times(number, index => ({
+        key: index,
+        text: `${prefix - index}`,
+        value: `${prefix - index}`,
+    }))
 
 
 class Register extends React.Component {
@@ -31,9 +51,7 @@ class Register extends React.Component {
         genderValue: '',
         cityValue: '',
         countryValue: '',
-        borderColor1: '',
-        borderColor2: '',
-        borderColor3: '',
+        Date: 'Day'
 
     }
 
@@ -50,15 +68,13 @@ class Register extends React.Component {
 
     gender = (e) => {
 
+
         if (e === 'male') {
             this.setState({
                 changeImage: false,
                 changeImage2: true,
                 changeImage3: true,
-                genderValue: 'male',
-                borderColor1: 'orange',
-                borderColor2: '',
-                borderColor3: '',
+                genderValue: e
             })
         }
         if (e === 'female') {
@@ -66,10 +82,7 @@ class Register extends React.Component {
                 changeImage: true,
                 changeImage2: false,
                 changeImage3: true,
-                genderValue: 'female',
-                borderColor1: '',
-                borderColor2: 'orange',
-                borderColor3: '',
+                genderValue: e
             })
         }
         if (e === 'other') {
@@ -77,10 +90,7 @@ class Register extends React.Component {
                 changeImage: true,
                 changeImage2: true,
                 changeImage3: false,
-                genderValue: 'other',
-                borderColor1: '',
-                borderColor2: '',
-                borderColor3: 'orange',
+                genderValue: e
             })
         }
     }
@@ -232,92 +242,55 @@ class Register extends React.Component {
                             placeholder="Mobile No"
                             name="mobileno"
                         />
-                        <LargeInput type="text"
-                            autoComplete="off"
-                            className="email"
-                            value={this.state.fields.dob}
-                            ref={input => this.DOB = input}
-                            onChange={this.getValue}
-                            placeholder="DD-MM-YYYY"
-                            style={{ fontSize: '18px' }}
-                            name="dob"
-                        />
+                        <P3 color="gray" className="DOBPara">
+                            What is your birthdate? 
+                        </P3>
+                        {/* Date Of Birth Creation */}
+                        <div className="DOBDiv">
+                            <Dropdown className="DOB" placeholder='Day' scrolling options={getDay(30)} />
+                            <Dropdown className="DOB" placeholder='Mon' scrolling options={getMonth(12)} />
+                            <Dropdown className="DOBYear" placeholder='Year' scrolling options={getYear(50)} />
+                        </div>
 
                         {/* gender Division */}
-
-                        <div className="genderDiv">
-                            <div className="gender"
-                                onClick={this.gender.bind(this, 'male')}
-                                style={{
-                                    border: "1px solid " + this.state.borderColor1
-                                }} >
-                                <P3 className="P3"
-                                    style={{
-                                        color: this.state.borderColor1
-                                    }}>
-                                    Male
-                                </P3>
+                        <P3 color="gray" className="genderPara">
+                            What is your gender? 
+                        </P3>
+                        <div className="genderMainDiv">
+                            <div className="genderSubDiv">
+                                <input className="gender" type="button" value="Male" onClick={this.gender.bind(this, 'male')} />
                                 {this.state.changeImage ?
-                                    <Icon name="circle outline" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }} ></Icon> :
-                                    <Icon name="dot circle" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }}
-                                    color="orange"></Icon>
+                                    <img
+                                        onClick={this.gender.bind(this, 'male')}
+                                        className="imageIcon1"
+                                        src="https://img.icons8.com/ios/18/000000/unchecked-circle-filled.png" /> :
+                                    <img
+                                        className="imageIcon"
+                                        src="https://img.icons8.com/material-sharp/18/000000/unchecked-radio-button.png" />
                                 }
                             </div>
-                            <div className="gender"
-                                onClick={this.gender.bind(this, 'female')}
-                                style={{
-                                    border: "1px solid " + this.state.borderColor2
-                                }}>
-                                <P3 className="P3"
-                                    style={{
-                                        color: this.state.borderColor2 ,
-                                        paddingLeft : '25px'
-                                    }}>
-                                    Female
-                                </P3>
+                            <div className="genderSubDiv">
+                                <input className="gender" type="button" value="Female" onClick={this.gender.bind(this, 'female')} />
                                 {this.state.changeImage2 ?
-                                    <Icon name="circle outline" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }} ></Icon> :
-                                    <Icon name="dot circle" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }}
-                                    color="orange"></Icon>
+                                    <img
+                                        onClick={this.gender.bind(this, 'female')}
+                                        className="imageIcon1"
+                                        src="https://img.icons8.com/ios/18/000000/unchecked-circle-filled.png" /> :
+                                    <img
+                                        className="imageIcon"
+                                        src="https://img.icons8.com/material-sharp/18/000000/unchecked-radio-button.png" />
                                 }
                             </div>
-                            <div className="gender"
-                                onClick={this.gender.bind(this, 'other')}
-                                style={{
-                                    border: "1px solid " + this.state.borderColor3
-                                }}>
-                                <P3 className="P3"
-                                    style={{ color: this.state.borderColor3 }} >
-                                    Other
-                                </P3>
+                            <div className="genderSubDiv">
+                                <input className="gender" type="button" value="Other" onClick={this.gender.bind(this, 'other')} />
                                 {this.state.changeImage3 ?
-                                    <Icon name="circle outline" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }} ></Icon> :
-                                    <Icon name="dot circle" style={{
-                                        position: 'absolute',
-                                        top: '10px',
-                                        left: '20px'
-                                    }}
-                                    color="orange"></Icon>
+                                    <img
+                                        onClick={this.gender.bind(this, 'other')}
+                                        className="imageIcon1"
+                                        src="https://img.icons8.com/ios/18/000000/unchecked-circle-filled.png" /> :
+                                    <img
+                                        className="imageIcon"
+                                        src="https://img.icons8.com/material-sharp/18/000000/unchecked-radio-button.png" />
                                 }
                             </div>
                         </div>
@@ -325,15 +298,7 @@ class Register extends React.Component {
                         {/* Dropdown Division */}
 
                         <Dropdown
-                            style={{
-                                border: '0',
-                                borderRadius: 'none',
-                                fontSize: '18px',
-                                borderBottom: '1px solid gray',
-                                margin: '0 0 20px 0',
-                                boxShadow: "none",
-                            }
-                            }
+                            className="city"
                             placeholder='Select City'
                             fluid
                             search
@@ -366,10 +331,10 @@ class Register extends React.Component {
                         <div className="Paragraph">
                             <P5 className="para">
                                 Already Have an account?
-                                </P5>
+                            </P5>
                             <H6 className="h6" onClick={this.register}>
                                 Login
-                                </H6>
+                            </H6>
                         </div>
                         {/* </form> */}
                     </div>) : <LoginPage />}

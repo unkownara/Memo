@@ -1,213 +1,270 @@
- /* login design */
+/* login design */
 
-  .login {
-    display: grid;
-    grid-template-columns: repeat(2,1fr); 
-    height: 100vh;
-  }
-  .image {
-    background: url('image.svg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .loginPage {
-    margin: auto;
-  }
-  .loginpageSection {
-    min-width: 400px;
-  }
-  .heading{
-    margin: 20px 0 25px 0;
-  }
-  .para {
-    padding: 20px;
-    font-size: 18px;
-    font-family: serif;
-  }
-  .forgotSpan {
-    padding: 20px 0 0  0;
-    cursor: pointer;
-    text-align: right;
-    font-family: none;
-    font-size: 17px;
-  }
-  .forgotSpan:hover {
-    color: #582CDB;
-  }
-  
-  .email {
-    border-bottom: 1px solid rgba(95, 84, 84, 0.771);
-    margin: 30px 0 10px 0;
-    outline: none;
-    width: 100%;
-    font-size: 20px;
-  }
-  .email:focus  {
-    border-bottom: 1px solid #582CDB;
-  }
-  .email:focus::placeholder {
-    color: transparent
-  }
-  .email::placeholder{
-    font-family: serif;
-  }
-  .passwordDiv {
-    position: relative;
-  }
-  .password {
-    border-bottom: 1px solid rgba(95, 84, 84, 0.771);
-    margin: 30px 0 10px 0;
-    outline: none;
-    width: 100%;
-    font-size: 20px;
-  }
-  .password:focus  {
-    border-bottom: 1px solid #582CDB;
-  }
-  .password:focus::placeholder {
-    color: transparent
-  }
-  .password::placeholder{
-    font-family: serif;
-  }
-  .Img1{
-    position: absolute;
-    right: 0;
-    margin-top: -38px;
-    z-index: 999;
-    margin-right: 11px;
-    cursor: pointer;
-  }
-  .paraAndButton {
-      display: block;
-      text-align: center;
-  }
-  .submit {
-    margin: 30px auto 0px auto;
-    font-size: 18px;
- }
- .Paragraph {
+.login {
+  display: grid;
+  grid-template-columns: repeat(2,1fr); 
+  height: 100vh;
+}
+.image {
+  background: url('image.svg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.loginPage {
+  margin: auto;
+}
+.loginpageSection {
+  min-width: 400px;
+}
+.heading{
+  margin: 20px 0 25px 0;
+}
+.para {
+  padding: 20px;
+  font-size: 18px;
+  font-family: serif;
+}
+.forgotSpan {
+  padding: 20px 0 0  0;
+  cursor: pointer;
+  text-align: right;
+  font-family: none;
+  font-size: 17px;
+}
+.forgotSpan:hover {
+  color: #582CDB;
+}
+
+.email {
+  border-bottom: 1px solid rgba(95, 84, 84, 0.771);
+  margin: 30px 0 10px 0;
+  outline: none;
+  width: 100%;
+  font-size: 20px;
+}
+.email:focus  {
+  border-bottom: 1px solid #582CDB;
+}
+.email:focus::placeholder {
+  color: transparent
+}
+.email::placeholder {
+  font-family: serif;
+}
+.passwordDiv {
+  position: relative;
+}
+.password {
+  border-bottom: 1px solid rgba(95, 84, 84, 0.771);
+  margin: 30px 0 10px 0;
+  outline: none;
+  width: 100%;
+  font-size: 20px;
+}
+.password:focus  {
+  border-bottom: 1px solid #582CDB;
+}
+.password:focus::placeholder {
+  color: transparent
+}
+.password::placeholder{
+  font-family: serif;
+}
+.Img1 {
+  position: absolute;
+  right: 0;
+  margin-top: -38px;
+  z-index: 999;
+  margin-right: 11px;
+  cursor: pointer;
+}
+.paraAndButton {
+  display: block;
+  text-align: center;
+}
+.submit {
+  margin: 30px auto 0px auto;
+  font-size: 18px;
+}
+.Paragraph {
   display: inline-flex;
   margin: 0px auto;
   min-width: 400px;
   justify-content: center;
   padding-top: 20px;
- }
- .para{
+}
+.para {
   display: inline-flex;
   align-items: center;
   margin: 0px -15px;
 
- }
- .h6{
+}
+.h6 {
   margin: 20px 0px;
   padding-left: 0px;
   cursor: pointer;
- }
- .h6:hover{
+}
+.h6:hover{
   color: #582CDB;
- }  
+}  
 
- /* forgot password */
- 
-  .forgotPassword {
-    margin: auto;
-  }
-  .forgotInputBoxDiv {
-    min-width: 400px;
-  }
-  .submitButtonDiv {
-    padding: 30px 0 0 0;
-    text-align: center;
-  }
-    /* new password */
-  
-  .newPassInputBoxDiv {
-    position: relative;
-  }
-  .newPassword {
-    max-width: 400px;
-  }
-  .subHeading{
-    font-family: none;
-    font-size: 17px;
-    color: gray;
-  }
-  .submitButton {
-    text-align: center;
-  }
+/* forgot password */
 
-   /* otp design */
+.forgotPassword {
+  margin: auto;
+}
+.forgotInputBoxDiv {
+  min-width: 400px;
+}
+.submitButtonDiv {
+  padding: 30px 0 0 0;
+  text-align: center;
+}
+/* new password */
 
-  .OTPmain {
-    padding: 20px 0 0 0;
-  }
+.newPassInputBoxDiv {
+  position: relative;
+}
+.newPassword {
+  max-width: 400px;
+}
+.subHeading{
+  font-family: none;
+  font-size: 17px;
+  color: gray;
+}
+.submitButton {
+  text-align: center;
+}
 
-  .OTP {
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    grid-gap: 10px;
-    font-size: 20px;
-    outline: none;
-    padding: 0 0 30px 0;
-  }
-  .PasswordOTPInputBox {
-    min-width: 30px;
-    min-height: 35px;
-    text-align: center;
-    border: 0;
-    border-bottom: 1px solid rgba(95, 84, 84, 0.771); 
-  }
-  .PasswordOTPInputBox:focus {
-    outline: none;
-    border-bottom: 1px solid #582CDB;
-  }
-  .paraOTP {
+/* otp design */
+
+.OTPmain {
+  padding: 20px 0 0 0;
+}
+
+.OTP {
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  grid-gap: 10px;
+  font-size: 20px;
+  outline: none;
+  padding: 0 0 30px 0;
+}
+.PasswordOTPInputBox {
+  min-width: 30px;
+  min-height: 35px;
+  text-align: center;
+  border: 0;
+  border-bottom: 1px solid rgba(95, 84, 84, 0.771); 
+}
+.PasswordOTPInputBox:focus {
+  outline: none;
+  border-bottom: 1px solid #582CDB;
+}
+.paraOTP {
   font-size: 18px;
   font-family: serif;
   text-align: center;
-  } 
+} 
 
-   /* Register design */
+/* Register design */
 
-  .Register {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 400px;
-  }
-  .genderDiv {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    padding: 30px 0 30px 0;
-    grid-gap: 20px;  
-  }
+.Register {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 400px;
+}
 
-  .Image{
-    position: absolute;
-    right: 0;
-    margin-top: -25px;
-  }
-  .P3{
-    margin: 0 auto;
-    padding-left: 15px;
-  }
-  .P3Female{
-    padding-left: 20px;
-  }
-  .gender{
-    position: relative;
-    border-radius: 5px;
-    padding: 7px;
-    cursor: pointer;
-    outline: none;
-  }
+.DOBDiv {
+  display: grid;
+  grid-template-columns: 25% 25% 25% ;
+  grid-gap:20px;
+}
 
-  label {
-    padding: 0 0 0 5px;
-    font-size: 20px;
-    font-weight: 700;
-    color: gray;
-    cursor: pointer;
-    font-family: serif;
-  }
+.DOBPara {
+  text-align: left;
+  padding: 15px 10px 0 0;
+  font-family: serif;
+}
+
+.DOB {
+  padding: 10px 0 10px 30px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+  text-align: center; 
+  font-size: 17px;
+  border: 1px solid lightgray;
+  color: slategray;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+.DOB:hover {
+  border: 1px solid black;
+  color: black;
+}
+.DOBYear:hover {
+  border: 1px solid black;
+  color: black;
+}
+.DOBYear {
+  padding: 10px 0 10px 20px; 
+  font-size: 17px;
+  border: 1px solid lightgray;
+  color: slategray;
+  border-radius: 5px;
+  font-family: sans-serif;    
+}
+.genderPara{
+  text-align: left;
+  padding: 15px 10px 0 0;
+  font-family: serif;
+}
+
+.genderMainDiv {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
+  margin: 20px auto;
+}
+
+.genderSubDiv{ 
+  position: relative;
+}
+
+.gender {
+  padding: 10px 40px;
+  font-family: serif;
+  font-size: 18px;
+  outline: none;
+  color: gray;
+  border: 1px solid lightgray;
+  border-radius: 5px; 
+  background-color: transparent;
+}
+
+.imageIcon {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+.imageIcon1 {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  opacity: 0.3;
+}
+.genderSubDiv:hover .gender {
+  border: 1px solid black;
+}
+.genderSubDiv:hover .imageIcon{
+  opacity: 1;
+}
+
+.city {
+  border: 0;
+  border-radius: none;
+  font-size: 18px;
+  border-bottom: 1px solid gray;
+  margin: 0 0 20px 0;
+  box-shadow: none;
+}

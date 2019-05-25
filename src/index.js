@@ -7,7 +7,6 @@ import {store} from './Store/Store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-
 Amplify.configure({
 	Auth: {
 		mandatorySignIn: true,

@@ -52,7 +52,7 @@ export const P2 = styled.p`
 export const P3 = styled.p`
 	font-size: 18px;
 	font-weight: semi-bold;
-	color: #000
+	color: ${props => props.color || "#000"};
 `;
 
 export const P4 = styled.p`
