@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginPage from './loginpage.js';
 import { Icon } from 'semantic-ui-react';
+import { LargeInput, H2, MediumPrimaryButton, P5, H6 } from '../Generics/Styles';
 
 class NewPassword extends React.Component {
 
@@ -12,16 +13,15 @@ class NewPassword extends React.Component {
         changeLogin: true,
         iconSelect: true,
         iconChange: true,
-        OTPValue: [
-            {
-                firstValue: '',
-                secondValue: '',
-                thirdValue: '',
-                fourthValue: '',
-                fifthValue: '',
-                sixthValue: '',
-            }
-        ],
+        OTPArray: [],
+        OTPvalue: {
+            firstValue: '',
+            secondValue: '',
+            thirdValue: '',
+            fourthValue: '',
+            fifthValue: '',
+            sixthValue: ''
+        },
         warning: false,
         OTPChange: false
     }
@@ -32,6 +32,21 @@ class NewPassword extends React.Component {
         this.setState({
             newPassValue: e.target.value,
             warning: false
+        }, () => {
+            if ((this.state.confirmPassValue.length !== 0) && (this.state.newPassValue !== this.state.confirmPassValue)) {
+                this.setState({
+                    iconSelect: false,
+                    iconChange: true,
+                    OTPChange: false
+                })
+            }
+            else if ((this.state.confirmPassValue.length !== 0) && this.state.newPassValue === this.state.confirmPassValue) {
+                this.setState({
+                    iconSelect: false,
+                    iconChange: false,
+                    OTPChange: true
+                })
+            }
         })
     }
 
@@ -44,6 +59,7 @@ class NewPassword extends React.Component {
                 warning: true
             })
             this.email.focus();
+            alert(this.state.newPassValue)
         }
         else {
             this.setState({
@@ -107,40 +123,58 @@ class NewPassword extends React.Component {
         else {
             switch (target) {
                 case 'firstOtpInput':
+                    let first = this.state.OTPvalue;
+                    first.firstValue = e.target.value
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: first
+                    }, () => {
+                        this.secondOtpInput.focus();
                     })
-                    this.secondOtpInput.focus();
                     break;
                 case 'secondOtpInput':
+                    let second = this.state.OTPvalue;
+                    second.secondValue = e.target.value;
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: second
+                    }, () => {
+                        this.thirdOtpInput.focus();
                     })
-                    this.thirdOtpInput.focus();
                     break;
                 case 'thirdOtpInput':
+                    let third = this.state.OTPvalue;
+                    third.thirdValue = e.target.value
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: third
+                    }, () => {
+                        this.fourOtpInput.focus();
                     })
-                    this.fourOtpInput.focus();
                     break;
                 case 'fourOtpInput':
+                    let fourth = this.state.OTPvalue;
+                    fourth.fourthValue = e.target.value
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: fourth
+                    }, () => {
+                        this.fifthOtpInput.focus();
                     })
-                    this.fifthOtpInput.focus();
                     break;
                 case 'fifthOtpInput':
+                    let fifth = this.state.OTPvalue;
+                    fifth.fifthValue = e.target.value
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: fifth
+                    }, () => {
+                        this.sixOtpInput.focus();
                     })
-                    this.sixOtpInput.focus();
                     break;
                 case 'sixOtpInput':
+                    let six = this.state.OTPvalue;
+                    six.sixthValue = e.target.value
                     this.setState({
-                        firstValue: e.target.value
+                        OTPvalue: six
+                    }, () => {
+                        this.sixOtpInput.focus();
                     })
-                    this.sixOtpInput.focus();
                     break;
                 default:
                     this.firstOtpInput.focus();
@@ -150,16 +184,51 @@ class NewPassword extends React.Component {
 
     // change To Login Page
 
-    login = () => {
+    register = () => {
         this.setState({
             changeLogin: false
         })
     }
 
+    validateForm(e) {
+        let newPassValue = this.state.newPassValue;
+        let formIsValid = true;
+
+        if (!newPassValue) {
+            formIsValid = false;
+        }
+
+        if (typeof newPassValue !== "undefined") {
+            if (!newPassValue.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+                formIsValid = false;
+                alert(formIsValid)
+            }
+        }
+        return formIsValid;
+    }
+
     // Form Submission
 
-    submit = () => {
+    submit = (e) => {
 
+        let array = this.state.OTPArray;
+        let obj = this.state.OTPvalue;
+        array.push(obj);
+
+        this.setState({
+            OTPArray : array
+        })
+
+        e.preventDefault();
+        if (this.validateForm()) {
+            let fields = "";
+            this.setState({
+                newPassValue: fields,
+                confirmPassValue: fields,
+                OTPChange: false,
+                iconSelect: true
+            });
+        }
     }
 
     render() {
@@ -174,14 +243,14 @@ class NewPassword extends React.Component {
                         {/* Heading And subHeading  */}
 
                         <div className="newPassParagraph">
-                            <p className="heading">Set NewPassword</p>
-                            <p className="subHeading">Your password must contain atleast 8 characters, 1 uppercase letter, and 1 digit.</p>
+                            <H2 className="heading">Set NewPassword</H2>
+                            <P5 className="subHeading">Your password must contain atleast 8 characters, 1 uppercase letter, and 1 digit.</P5>
                         </div>
 
                         {/* New Password Input Box */}
                         <form onSubmit={this.submit}>
                             <div className="newPassInputBoxDiv">
-                                <input type="text"
+                                <LargeInput type="text"
                                     placeholder="New Password"
                                     className="email"
                                     ref={(input) => { this.email = input }}
@@ -194,7 +263,7 @@ class NewPassword extends React.Component {
                                         style={{
                                             position: 'absolute',
                                             right: '0',
-                                            top: '47px'
+                                            top: '35px'
                                         }} /> :
                                     null}
                             </div>
@@ -202,7 +271,7 @@ class NewPassword extends React.Component {
                             {/* Confirm Password Input Box */}
 
                             <div style={{ position: 'relative' }}>
-                                <input type="password"
+                                <LargeInput type="password"
                                     placeholder="Confirm New Password"
                                     className="password"
                                     value={this.state.confirmPassValue}
@@ -214,7 +283,7 @@ class NewPassword extends React.Component {
                                         style={{
                                             position: 'absolute',
                                             right: '0px',
-                                            top: '45px',
+                                            top: '35px',
                                             zIndex: '999'
                                         }} />) :
                                     (<Icon name='check circle outline'
@@ -222,7 +291,7 @@ class NewPassword extends React.Component {
                                         style={{
                                             position: 'absolute',
                                             right: '0px',
-                                            top: '45px',
+                                            top: '35px',
                                             zIndex: '999'
                                         }} />)
                                 )}
@@ -234,34 +303,40 @@ class NewPassword extends React.Component {
                                 (
                                     <div className="OTPmain"><p className="paraOTP">Enter OTP</p>
                                         <div className="OTP">
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.firstValue}
                                                 ref={(input) => { this.firstOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'firstOtpInput')} />
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.secondValue}
                                                 ref={(input) => { this.secondOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'secondOtpInput')} />
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.thirdValue}
                                                 ref={(input) => { this.thirdOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'thirdOtpInput')} />
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.fourthValue}
                                                 ref={(input) => { this.fourOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'fourOtpInput')} />
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.fifthValue}
                                                 ref={(input) => { this.fifthOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'fifthOtpInput')} />
-                                            <input type="text"
+                                            <LargeInput type="text"
                                                 maxLength="1"
                                                 className="PasswordOTPInputBox"
+                                                value={this.state.OTPArray.sixthValue}
                                                 ref={(input) => { this.sixOtpInput = input }}
                                                 onKeyUp={this.onKey.bind(this, 'sixOtpInput')} />
                                         </div>
@@ -271,8 +346,21 @@ class NewPassword extends React.Component {
                             {/* Form submit button And Paragraph */}
 
                             <div className="submitButton">
-                                <button type="button" className="submit" onClick={this.submit} > Reset Password </button>
-                                <p className="para">Remember your password? <span onClick={this.login}>Login</span></p>
+                                <MediumPrimaryButton type="button"
+                                    height="50px"
+                                    width="200px"
+                                    className="submit"
+                                    onClick={this.submit} >
+                                    Reset Password
+                                </MediumPrimaryButton>
+                            </div>
+                            <div className="Paragraph">
+                                <P5 className="para">
+                                    Remember your password?
+                                </P5>
+                                <H6 className="h6" onClick={this.register}>
+                                    Login
+                                </H6>
                             </div>
                         </form>
                     </div>) :

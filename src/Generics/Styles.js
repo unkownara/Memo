@@ -96,14 +96,14 @@ export const P14 = styled.p`
 
 export const SmallInput = styled.input`
 	max-height: 40px;
-	max-width: 150px;
+	max-width: 300px;
 	padding: ${props => props.padding || "2px"};
 	border: ${props => props.border || "none"};
 `;
 
 const MediumInput = styled.input`
 	max-height: 50px;
-	max-width: 200px;
+	max-width: 350px;
 	padding: ${props => props.padding || "4px"};
 	border: ${props => props.border || "none"}; 
 `;
@@ -113,7 +113,7 @@ export default MediumInput;
 
 export const LargeInput = styled.input`
 	max-height: 50px;
-	max-width: 250px;
+	max-width: 400px;
 	padding: ${props => props.padding || "4px"};
 	border: ${props => props.border || "none"};
 `;
