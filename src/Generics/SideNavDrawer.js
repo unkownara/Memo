@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../Actions/ClubInfo';
-import { T16, SmallPrimaryButton } from '../Generics/Styles';
+import { T16, SmallPrimaryButton } from './Styles';
 
 import styled from 'styled-components';
 

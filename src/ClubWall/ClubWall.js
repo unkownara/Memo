@@ -1,5 +1,5 @@
 import React from 'react';
-import SideNavDrawer from './SideNavDrawer';
+import SideNavDrawer from '../Generics/SideNavDrawer';
 import { Layout, Container } from '../Generics/Styles';
 
 class ClubWall extends React.Component {
