@@ -14,7 +14,7 @@ class ClubCards extends React.Component {
         return (
             <Layout>
             <FixedContainer margin={'40px 0 40px 0'} centerItems={true}>
-                <HorizotalGridContainer columns={'1fr 1fr 1fr'} gridGap={'40px'}>
+                <HorizotalGridContainer columns={'1fr 1fr 1fr'} gap={'40px'}>
                     {
                         [1, 2, 3, 4, 5].map((data) =>
                             <Card />
