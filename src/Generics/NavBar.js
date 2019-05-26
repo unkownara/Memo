@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Headroom from 'react-headroom';
 import { connect } from 'react-redux';
-import { toggleClubInfoNav } from '../Actions/ClubInfo';
+import { toggleSideNav } from '../Actions/ClubInfo';
 import DP from '../Images/dp.png';
 
-import { PrimaryActionButton, T16, HorizotalGridContainer, FlexibleContainer, ElevatedImage, AlignItemsWrapper } from '../Generics/Styles';
+import { SmallPrimaryButton, T16, HorizontalGridContainer, FlexibleContainer, ElevatedImage, AlignItemsWrapper } from '../Generics/Styles';
 
-const NavBarContainer = styled(HorizotalGridContainer)`
+const NavBarContainer = styled(HorizontalGridContainer)`
     background: #fff;
     box-shadow: 0px 10px 50px rgb(229, 231, 231);
 `
@@ -17,7 +17,10 @@ const AppName = styled(T16)`
     line-height: 50px;
 `
 
-const InfoButton = styled(PrimaryActionButton)`
+const InfoButton = styled(SmallPrimaryButton)`
+    width: max-content; 
+    height: max-content; 
+    padding: 8px 5px;
     transition: 0.2s all ease-in-out;
     &:hover{
         transform: scale(1.04);
@@ -36,10 +39,10 @@ class NavBar extends React.Component {
         this.setState({ showClubInfoButton: window.location.pathname === '/club_wall' ? true : false })
     }
 
-    showClubInfoNav = () => {
-        this.props.toggleClubInfoNav(true);
+    showSideNav = () => {
+        this.props.toggleSideNav(true);
     }
-// Home, Clubs
+    // Home, Clubs
     render() {
         return (
             <Headroom>
@@ -47,21 +50,21 @@ class NavBar extends React.Component {
                     <FlexibleContainer centerItems>
                         <AppName bold>CLUBBING</AppName>
                     </FlexibleContainer>
-                    <HorizotalGridContainer >
+                    <HorizontalGridContainer >
 
-                    </HorizotalGridContainer>
-                    <HorizotalGridContainer columns={'1fr 1fr'}>
+                    </HorizontalGridContainer>
+                    <HorizontalGridContainer columns={'1fr 1fr'}>
                         <AlignItemsWrapper leftItems>
                             <ElevatedImage borderRadius={'50%'} src={DP} height={'35px'} width={'35px'} alt={'DP'} />
                         </AlignItemsWrapper>
                         {
                             this.state.showClubInfoButton ?
-                                <AlignItemsWrapper leftItems onClick={this.showClubInfoNav}>
-                                    <InfoButton padding={'8px 5px'}>CLUB INFO</InfoButton>
+                                <AlignItemsWrapper leftItems onClick={this.showSideNav}>
+                                    <InfoButton>CLUB INFO</InfoButton>
                                 </AlignItemsWrapper>
                                 : null
                         }
-                    </HorizotalGridContainer>
+                    </HorizontalGridContainer>
                 </NavBarContainer>
             </Headroom>
         );
@@ -76,4 +79,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { toggleClubInfoNav })(NavBar);
+export default connect(mapStateToProps, { toggleSideNav })(NavBar);

@@ -1,5 +1,5 @@
 import React from 'react';
-import ClubInfoNavDrawer from './ClubInfoNavDrawer';
+import SideNavDrawer from './SideNavDrawer';
 import { Layout, Container } from '../Generics/Styles';
 
 class ClubWall extends React.Component {
@@ -14,7 +14,7 @@ class ClubWall extends React.Component {
         return (
             <Container>
                 <Layout>
-                    <ClubInfoNavDrawer />
+                    <SideNavDrawer />
                 </Layout>
             </Container>
         );

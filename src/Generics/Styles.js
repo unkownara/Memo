@@ -109,29 +109,15 @@ export const T10 = styled.span`
 
 export const T16 = styled.span`
 	font-size: 16px;
-	text-align: center;
 	color: ${props => props.color || '#000'};
 	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
-	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
-	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
-	${props => props.middle ? {
-		verticalAlign: 'middle',
-		lineHeight: props.lineHeight
-	} : null}
 `
 
 
 export const T26 = styled.span`
 	font-size: 26px;
-	text-align: center;
 	color: ${props => props.color || '#000'};
 	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
-	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
-	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
-	${props => props.middle ? {
-		verticalAlign: 'middle',
-		lineHeight: props.lineHeight
-	} : null}
 `
 
 export const Label = styled.span`
@@ -178,68 +164,52 @@ export const LargeInput = styled.input`
 /* Buttons */
 
 export const SmallPrimaryButton = styled.button`
-	height: ${props => props.height || "40px"};
-	width: ${props => props.width || "150px"};
-	min-height: 30px;
-	min-width: 150px;
+	height: ${props => props.height || "30px"};
+	width: ${props => props.width || "100px"};
 	font-weight: bold;
 	border-radius: 6px;
 	border: 0;
 	outline: none;
 	color: white;
-	background-color: #582CDB;
-	box-shadow: 0 12px 18px -9px #582CDB;
+	background: ${props => props.bg ||'#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
 	cursor: pointer;
+	&:focus{
+		outline: 0;
+	}
 `;
 
 export const MediumPrimaryButton = styled.button`
 	height: ${props => props.height || "45px"};
 	width: ${props => props.width || "200px"};
-	min-height: 35px;
-	min-width: 200px;
 	font-weight: bold;
 	border-radius: 8px;
 	border: 0;
 	outline: none;
 	color: white;
-	background-color: #582CDB;
-	box-shadow: 0 12px 18px -9px #582CDB;
+	background: ${props => props.bg ||'#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
 	cursor: pointer;
+	&:focus{
+		outline: 0;
+	}
 `;
 
 export const LargePrimaryButton = styled.button`
 	height: ${props => props.height || "50px"};
 	width: ${props => props.width || "250px"};
-	min-height: 40px;
-	min-width: 240px;
 	font-weight: bold;
 	border-radius: 10px;
 	border: 0;
 	outline: none;
 	color: white;
-	background-color: #582CDB;
-	box-shadow: 0 12px 18px -9px #582CDB;
+	background: ${props => props.bg ||'#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
 	cursor: pointer;
-`;
-
-export const PrimaryActionButton = styled.button`
-	height: ${props => props.height || "max-content"};
-	width: ${props => props.width || "max-content"};
-	cursor: pointer;
-    padding: ${props => props.padding || '0px'};
-    background: ${props => props.bg || '#582CDB'};
-	color: #fff;
-	font-weight: bold;
-	border: 0;
-	outline: none;
-	font-size: ${props => props.fontSize || '10px'};
-	letter-spacing: 1px;
-    box-shadow: ${props => props.boxShadow || '0px 8px 12px -9px #582CDB'};
-    border-radius: 6px;
 	&:focus{
 		outline: 0;
 	}
-`
+`;
 
 /* Containers */
 
@@ -313,7 +283,7 @@ export const CurvedElevatedContainer = styled.div`
 	box-shadow: 0px 10px 50px rgb(229, 231, 231);
 `
 
-export const HorizotalGridContainer = styled.div`
+export const HorizontalGridContainer = styled.div`
 	display: grid;
 	grid-template-columns: ${props => props.columns || '1fr'};
 	grid-gap: ${props => props.gap || '0px'};
@@ -325,7 +295,7 @@ export const VerticalGridContainer = styled.div`
 	grid-gap: ${props => props.gap || '0px'};
 `
 
-export const HorizotalFlexContainer = styled.div`
+export const HorizontalFlexContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 `

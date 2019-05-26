@@ -1,4 +1,4 @@
-export const toggleClubInfoNav = (state, action) => {
+export const toggleSideNav = (state, action) => {
     switch (action.type) {
         case 'toggle_club_info':
             state = {

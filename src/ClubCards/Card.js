@@ -26,6 +26,10 @@ const SliderContainer = styled.div`
     overflow: hidden;
 `
 
+const PostCount = styled(T26)`
+    letter-spacing: 1px;
+`
+
 const MemberCount = styled.div`
     display: inline-block;
     height: 100%;
@@ -65,9 +69,9 @@ class Card extends Component {
                     <Label bg={'#C70085'}>Travel</Label>
                 </FlexibleContainer>
                 <FlexibleContainer margin={'20px 0'} centerItems={true}>
-                    <T26 bold={true} space={'1px'} color={'#252525'}>
+                    <PostCount bold={true} color={'#252525'}>
                         260
-                    </T26>
+                    </PostCount>
                     <T16 style={{ paddingLeft: '10px' }} space={'1px'} color={'#252525'}>posts</T16>
                 </FlexibleContainer>
                 <FixedContainer margin={'15px 0'} padding={'10px'} height={'45px'} >
