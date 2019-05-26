@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import { FixedContainer, HorizotalGridContainer } from '../Generics/Styles';
+import { Layout, FixedContainer, HorizotalGridContainer } from '../Generics/Styles';
 
 
 
@@ -12,7 +12,8 @@ class ClubCards extends React.Component {
 
     render() {
         return (
-            <FixedContainer margin={'40px 0 0 0'} centerItems={true}>
+            <Layout>
+            <FixedContainer margin={'40px 0 40px 0'} centerItems={true}>
                 <HorizotalGridContainer columns={'1fr 1fr 1fr'} gridGap={'40px'}>
                     {
                         [1, 2, 3, 4, 5].map((data) =>
@@ -21,6 +22,7 @@ class ClubCards extends React.Component {
                     }
                 </HorizotalGridContainer>
             </FixedContainer>
+            </Layout>
         );
     }
 }

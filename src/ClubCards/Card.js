@@ -19,9 +19,10 @@ import ImgE from '../Images/5.jpeg';
 
 const SliderContainer = styled.div`
     margin: 5px 0px 5px 5px;
+    border-radius:5px;
     display: grid;
     grid-template-columns: repeat(5, 100px);
-    grid-gap: 2px;
+    grid-gap: 25px;
     overflow: hidden;
 `
 
@@ -50,7 +51,7 @@ class Card extends Component {
                 <SliderContainer>
                     {
                         [ImgA, ImgB, ImgC, ImgD, ImgE].map((imageSrc, img_index) =>
-                            <Image src={imageSrc} height={'100px'} width={'100px'} alt={'Image'} borderRadius={'5px'} />
+                            <Image key={img_index} src={imageSrc} height={'100px'} width={'120px'} alt={'Image'} borderRadius={'5px'} />
                         )
                     }
                 </SliderContainer>
@@ -72,11 +73,11 @@ class Card extends Component {
                 <FixedContainer margin={'15px 0'} padding={'10px'} height={'45px'} >
                     {
                         [ImgA, ImgB, ImgC, ImgD, ImgE].map((imageSrc, img_index) =>
-                            <BorderedImage src={imageSrc} height={'32px'} width={'32px'} alt={'Image'} borderRadius={'50%'} margin={'0 -7px 0 0'} border={'2px solid #fff'} />
+                            <BorderedImage src={imageSrc} height={'32px'} width={'32px'} alt={'Image'} borderRadius={'50%'} margin={'0 -12px 0 0'} border={'2.5px solid #fff'} />
                         )
                     }
                     <MemberCount>
-                        + 5 more
+                        + <b>5</b> more
                     </MemberCount>
                 </FixedContainer>
             </CurvedElevatedContainer>

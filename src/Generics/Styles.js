@@ -93,23 +93,45 @@ export const P14 = styled.p`
 
 /* Custom Text */
 
+
+export const T10 = styled.span`
+	font-size: 10px;
+	text-align: center;
+	color: ${props => props.color || '#000'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
+	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
+	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
+	${props => props.middle ? {
+		verticalAlign: 'middle',
+		lineHeight: props.lineHeight
+	} : null}
+`
+
 export const T16 = styled.span`
 	font-size: 16px;
 	text-align: center;
-	font-weight: ${props => props.bold ? 'bold' : 'normal'};
-	letter-spacing: ${props => props.space || 'normal'};
 	color: ${props => props.color || '#000'};
-	text-transform: ${props => props.transform || 'none'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
+	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
+	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
+	${props => props.middle ? {
+		verticalAlign: 'middle',
+		lineHeight: props.lineHeight
+	} : null}
 `
 
 
 export const T26 = styled.span`
 	font-size: 26px;
 	text-align: center;
-	font-weight: ${props => props.bold ? 'bold' : 'normal'};
-	letter-spacing: ${props => props.space || 'normal'};
 	color: ${props => props.color || '#000'};
-	text-transform: ${props => props.transform || 'none'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
+	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
+	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
+	${props => props.middle ? {
+		verticalAlign: 'middle',
+		lineHeight: props.lineHeight
+	} : null}
 `
 
 export const Label = styled.span`
@@ -200,8 +222,11 @@ export const LargePrimaryButton = styled.button`
 	cursor: pointer;
 `;
 
-
 /* Containers */
+
+export const Layout = styled.div`
+	margin: 30px 70px 30px 70px;
+`
 
 export const Container = styled.div`
 	height: ${props => props.height || 'auto'};
@@ -216,6 +241,16 @@ export const FlexibleContainer = styled.div`
 		justifyContent: 'center',
 		alignItems: 'center'
 	} : null}
+	${props => props.leftItems ? {
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center'
+	} : null}
+	${props => props.rightItems ? {
+		display: 'flex',
+		justifyContent: 'flex-end',
+		alignItems: 'center'
+	} : null}
 `
 
 export const FixedContainer = styled.div`
@@ -226,6 +261,16 @@ export const FixedContainer = styled.div`
 	${props => props.centerItems ? {
 		display: 'flex',
 		justifyContent: 'center',
+		alignItems: 'center'
+	} : null}
+	${props => props.leftItems ? {
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center'
+	} : null}
+	${props => props.rightItems ? {
+		display: 'flex',
+		justifyContent: 'flex-end',
 		alignItems: 'center'
 	} : null}
 `
@@ -239,7 +284,7 @@ export const CurvedContainer = styled.div`
 export const ElevatedContainer = styled.div`
 	height: ${props => props.height || '0px'};
 	width: ${props => props.width || '0px'};
-	box-shadow: 0px 10px 50px rgb(229, 231, 231);
+	box-shadow: ${props => props.boxShadow || '0px 10px 50px rgb(229, 231, 231)'};
 `
 
 export const CurvedElevatedContainer = styled.div`
@@ -252,13 +297,13 @@ export const CurvedElevatedContainer = styled.div`
 export const HorizotalGridContainer = styled.div`
 	display: grid;
 	grid-template-columns: ${props => props.columns || '1fr'};
-	grid-gap: ${props => props.gridGap || '0px'};
+	grid-gap: ${props => props.gap || '0px'};
 `
 
 export const VerticalGridContainer = styled.div`
 	display: grid;
 	grid-template-rows: ${props => props.rows || '1fr'};
-	grid-gap: ${props => props.gridGap || '0px'};
+	grid-gap: ${props => props.gap || '0px'};
 `
 
 export const HorizotalFlexContainer = styled.div`
@@ -271,7 +316,26 @@ export const VerticalFlexContainer = styled.div`
 	flex-direction: column;
 `
 
+/* Wrappers */
 
+
+export const AlignItemsWrapper = styled.div`
+	${props => props.centerItems ? {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
+	} : null}
+	${props => props.leftItems ? {
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center'
+	} : null}
+	${props => props.rightItems ? {
+		display: 'flex',
+		justifyContent: 'flex-end',
+		alignItems: 'center'
+	} : null}
+`
 
 
 /* Images */
