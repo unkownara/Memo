@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { toggleClubInfoNav } from '../Actions/ClubInfo';
 import DP from '../Images/dp.png';
 
-import { T10, T16, HorizotalGridContainer, FlexibleContainer, ElevatedImage, AlignItemsWrapper } from '../Generics/Styles';
+import { PrimaryActionButton, T16, HorizotalGridContainer, FlexibleContainer, ElevatedImage, AlignItemsWrapper } from '../Generics/Styles';
 
 const NavBarContainer = styled(HorizotalGridContainer)`
     background: #fff;
@@ -17,12 +17,7 @@ const AppName = styled(T16)`
     line-height: 50px;
 `
 
-const InfoButton = styled(T10)`
-    cursor: pointer;
-    padding: 8px 5px;
-    background: #582CDB;
-    box-shadow: 0px 8px 12px -9px #582CDB;
-    border-radius: 5px;
+const InfoButton = styled(PrimaryActionButton)`
     transition: 0.2s all ease-in-out;
     &:hover{
         transform: scale(1.04);
@@ -62,7 +57,7 @@ class NavBar extends React.Component {
                         {
                             this.state.showClubInfoButton ?
                                 <AlignItemsWrapper leftItems onClick={this.showClubInfoNav}>
-                                    <InfoButton bold color={'#fff'} spacing={'1px'}>CLUB INFO</InfoButton>
+                                    <InfoButton padding={'8px 5px'}>CLUB INFO</InfoButton>
                                 </AlignItemsWrapper>
                                 : null
                         }

@@ -222,6 +222,25 @@ export const LargePrimaryButton = styled.button`
 	cursor: pointer;
 `;
 
+export const PrimaryActionButton = styled.button`
+	height: ${props => props.height || "max-content"};
+	width: ${props => props.width || "max-content"};
+	cursor: pointer;
+    padding: ${props => props.padding || '0px'};
+    background: ${props => props.bg || '#582CDB'};
+	color: #fff;
+	font-weight: bold;
+	border: 0;
+	outline: none;
+	font-size: ${props => props.fontSize || '10px'};
+	letter-spacing: 1px;
+    box-shadow: ${props => props.boxShadow || '0px 8px 12px -9px #582CDB'};
+    border-radius: 6px;
+	&:focus{
+		outline: 0;
+	}
+`
+
 /* Containers */
 
 export const Layout = styled.div`
