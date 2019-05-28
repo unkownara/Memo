@@ -118,6 +118,12 @@ export const T16 = styled.span`
 `
 
 
+export const T18 = styled.span`
+	font-size: 18px;
+	color: ${props => props.color || '#000'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
+`
+
 export const T26 = styled.span`
 	font-size: 26px;
 	color: ${props => props.color || '#000'};
@@ -233,7 +239,7 @@ export const LargePrimaryButton = styled.button`
 /* Containers */
 
 export const Layout = styled.div`
-	margin: 30px 70px 30px 70px;
+	margin: 30px 120px;
 `
 
 export const Container = styled.div`
@@ -358,4 +364,17 @@ export const SquareImage = styled.img`
 	height: ${props => props.height || '0px'};
 	width: ${props => props.width || '0px'};
 	border-radius: ${props => props.borderRadius || '5px'};
+`
+
+/* Custom components */
+
+export const FilledInfoBox = styled.div`
+	height: ${props => props.height || 'max-content'};
+	width: ${props => props.width || 'max-content'};
+	background: ${props => props.bg};
+	color:  ${props => props.color};
+    border: 2px solid ${props => props.border};
+	font-weight: bold;
+    border-radius: 5px;
+    letter-spacing: 1px;
 `
