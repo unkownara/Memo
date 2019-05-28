@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleSideNav } from '../Actions/ClubInfo';
-import { T16, SmallPrimaryButton } from './Styles';
+import { T16, SmallPrimaryButton, SquareImage } from './Styles';
 
+import CloseIcon from '../Images/close.png';
 import styled from 'styled-components';
 
 const SideNav = styled.div`
@@ -34,12 +35,8 @@ const SideNavHeading = styled(T16)`
     line-height: 22px;
 `
 
-const CloseButton = styled(SmallPrimaryButton)`
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 10px;
-    width: 60px;
-    height: 24px;
+const CloseButton = styled(SquareImage)`
+    cursor: pointer;
 `
 
 class NavigationDrawer extends React.Component {
@@ -57,8 +54,8 @@ class NavigationDrawer extends React.Component {
             <SideNav width={showClubInfo ? '400px' : '0px'}>
                 <SideNavWrapper show={showClubInfo}>
                     <SideNavHeaderWrapper columns={'9fr 1fr'}>
-                        <SideNavHeading bold>Club Info</SideNavHeading>
-                        <CloseButton bg={'#000'} onClick={this.hideSideNav}>close</CloseButton>
+                        <SideNavHeading bold>{this.props.title}</SideNavHeading>
+                        <CloseButton src={CloseIcon} onClick={this.hideSideNav} height={'20px'} width={'20px'} />
                     </SideNavHeaderWrapper>
                     {this.props.children}
                 </SideNavWrapper>

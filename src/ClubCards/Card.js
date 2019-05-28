@@ -5,8 +5,8 @@ import {
     FlexibleContainer,
     FixedContainer,
     CurvedElevatedContainer,
-    Image,
-    BorderedImage,
+    CircularImage,
+    SquareImage,
     Label
 } from '../Generics/Styles';
 import styled from 'styled-components';
@@ -37,6 +37,11 @@ const MemberCount = styled.div`
     margin-left: 20px;
 `
 
+const MemberAvatar = styled(CircularImage)`
+    margin: 0 -12px 0 0; 
+    border: 2.5px solid #fff; 
+`
+
 class Card extends Component {
     constructor(props) {
         super(props);
@@ -55,13 +60,10 @@ class Card extends Component {
                 <SliderContainer>
                     {
                         [ImgA, ImgB, ImgC, ImgD, ImgE].map((imageSrc, img_index) =>
-                            <Image key={img_index} src={imageSrc} height={'100px'} width={'120px'} alt={'Image'} borderRadius={'5px'} />
+                            <SquareImage key={img_index} src={imageSrc} height={'100px'} width={'120px'} alt={'SquareImage'} borderRadius={'5px'} />
                         )
                     }
                 </SliderContainer>
-                <FlexibleContainer margin={'-15px 0 10px 1px'} centerItems={true}>
-                    <BorderedImage src={ImgD} height={'55px'} width={'55px'} alt={'Category'} borderRadius={'50%'} border={'4px solid #fff'} />
-                </FlexibleContainer>
                 <FlexibleContainer centerItems={true}>
                     <T16 bold={true} space={'1px'} color={'#252525'}>Industrial Visit</T16>
                 </FlexibleContainer>
@@ -77,7 +79,7 @@ class Card extends Component {
                 <FixedContainer margin={'15px 0'} padding={'10px'} height={'45px'} >
                     {
                         [ImgA, ImgB, ImgC, ImgD, ImgE].map((imageSrc, img_index) =>
-                            <BorderedImage src={imageSrc} height={'32px'} width={'32px'} alt={'Image'} borderRadius={'50%'} margin={'0 -12px 0 0'} border={'2.5px solid #fff'} />
+                            <MemberAvatar src={imageSrc} height={'32px'} width={'32px'} alt={'SquareImage'}/>
                         )
                     }
                     <MemberCount>

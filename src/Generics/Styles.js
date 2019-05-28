@@ -93,18 +93,22 @@ export const P14 = styled.p`
 
 /* Custom Text */
 
-
 export const T10 = styled.span`
 	font-size: 10px;
-	text-align: center;
 	color: ${props => props.color || '#000'};
 	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
-	${props => props.spacing ? { letterSpacing: props.spacing } : { letterSpacing: 'normal' }};
-	${props => props.transform ? { textTransform: 'uppercase' } : { textTransform: 'none' }};
-	${props => props.middle ? {
-		verticalAlign: 'middle',
-		lineHeight: props.lineHeight
-	} : null}
+`
+
+export const T12 = styled.span`
+	font-size: 12px;
+	color: ${props => props.color || '#000'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
+`
+
+export const T14 = styled.span`
+	font-size: 14px;
+	color: ${props => props.color || '#000'};
+	${props => props.bold ? { fontWeight: 'bold' } : { fontWeight: 'normal' }};
 `
 
 export const T16 = styled.span`
@@ -137,27 +141,42 @@ export const Label = styled.span`
 /* Inputs */
 
 export const SmallInput = styled.input`
-	max-height: 40px;
-	max-width: 150px;
-	padding: ${props => props.padding || "2px"};
-	border: ${props => props.border || "none"};
+	height: ${props => props.height || '30px'};
+	width: ${props => props.width || '150px'};
+	min-height: 30px;
+	min-width: 150px;
+	border-radius: 6px;
+	border: ${props => props.border || "1px solid #eee"};
+	outline: 0;
+    &:focus{
+        outline: none;
+    }
 `;
 
-const MediumInput = styled.input`
-	max-height: 50px;
-	max-width: 200px;
-	padding: ${props => props.padding || "4px"};
-	border: ${props => props.border || "none"}; 
+export const MediumInput = styled.input`
+	height: ${props => props.height || '40px'};
+	width: ${props => props.width || '200px'};
+	min-height: 40px;
+	min-width: 200px;
+	border-radius: 6px;
+	border: ${props => props.border || "1px solid #eee"};
+	outline: 0;
+    &:focus{
+        outline: none;
+    } 
 `;
-
-export default MediumInput;
-
 
 export const LargeInput = styled.input`
-	max-height: 50px;
-	max-width: 250px;
-	padding: ${props => props.padding || "4px"};
-	border: ${props => props.border || "none"};
+	height: ${props => props.height || '50px'};
+	width: ${props => props.width || '250px'};
+	min-height: 50px;
+	min-width: 250px;
+	border-radius: 6px;
+	border: ${props => props.border || "1px solid #eee"};
+	outline: 0;
+    &:focus{
+        outline: none;
+    }
 `;
 
 
@@ -171,8 +190,8 @@ export const SmallPrimaryButton = styled.button`
 	border: 0;
 	outline: none;
 	color: white;
-	background: ${props => props.bg ||'#582CDB'};
-	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
+	background: ${props => props.bg || '#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg || '#582CDB'};
 	cursor: pointer;
 	&:focus{
 		outline: 0;
@@ -187,8 +206,8 @@ export const MediumPrimaryButton = styled.button`
 	border: 0;
 	outline: none;
 	color: white;
-	background: ${props => props.bg ||'#582CDB'};
-	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
+	background: ${props => props.bg || '#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg || '#582CDB'};
 	cursor: pointer;
 	&:focus{
 		outline: 0;
@@ -203,8 +222,8 @@ export const LargePrimaryButton = styled.button`
 	border: 0;
 	outline: none;
 	color: white;
-	background: ${props => props.bg ||'#582CDB'};
-	box-shadow: 0 12px 18px -9px ${props => props.bg ||'#582CDB'};
+	background: ${props => props.bg || '#582CDB'};
+	box-shadow: 0 12px 18px -9px ${props => props.bg || '#582CDB'};
 	cursor: pointer;
 	&:focus{
 		outline: 0;
@@ -329,26 +348,14 @@ export const AlignItemsWrapper = styled.div`
 
 /* Images */
 
-export const Image = styled.img`
+export const CircularImage = styled.img`
 	height: ${props => props.height || '0px'};
 	width: ${props => props.width || '0px'};
-	margin: ${props => props.margin || '0px'};
-	border-radius: ${props => props.borderRadius || '0px'};
+	border-radius: 50%;
 `
 
-
-export const BorderedImage = styled.img`
+export const SquareImage = styled.img`
 	height: ${props => props.height || '0px'};
 	width: ${props => props.width || '0px'};
-	margin: ${props => props.margin || '0px'};
-	border-radius: ${props => props.borderRadius || '0px'};
-	border: ${props => props.border || 'none'}
+	border-radius: ${props => props.borderRadius || '5px'};
 `
-
-export const ElevatedImage = styled.img`
-	height: ${props => props.height || '0px'};
-	width: ${props => props.width || '0px'};
-	margin: ${props => props.margin || '0px'};
-	border-radius: ${props => props.borderRadius || '0px'};
-	box-shadow: 0px 10px 50px rgb(229, 231, 231);
-` 
