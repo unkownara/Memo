@@ -177,7 +177,8 @@ class ClubWall extends React.Component {
         this.state = {
             showDatePicker: false,
             startDate: 'POSTS FROM',
-            endDate: 'POSTS TILL'
+            endDate: 'POSTS TILL',
+            startDateSelected: 0
         };
     }
 
@@ -191,11 +192,11 @@ class ClubWall extends React.Component {
     }
 
     setStartDate = (date) => {
-        this.setState({ startDate: date });
+        this.setState({ startDate: date, startDateSelected: 1 });
     }
 
     setEndDate = (date) => {
-        this.setState({ endDate: date, showDatePicker: false });
+        this.setState({ endDate: date, showDatePicker: this.state.startDateSelected ? false : true, startDateSelected: 0 });
     }
 
     render() {
