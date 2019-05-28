@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import cookie from 'react-cookies';
 import history from '../history';
 import {getUserInformation} from '../Actions/Auth';
-import { SmallPrimaryButton } from '../Generics/Styles';
+import { MediumPrimaryButton } from '../Generics/Styles';
 
 class Login extends Component {
 
@@ -55,7 +55,7 @@ class Login extends Component {
                 <input type="text" onChange={this.changeUserEmailId}/>
                 <input type="password" onChange={this.changeUserPassword}/>
                 <p onClick={this.redirect}> Forgot password? </p>
-                <SmallPrimaryButton onClick={this.signIn}> Login</SmallPrimaryButton>
+                <MediumPrimaryButton onClick={this.signIn}> Login</MediumPrimaryButton>
             </div>
         );
     }

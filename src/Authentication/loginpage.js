@@ -2,7 +2,11 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import Forgot from './forgot.js';
 import Register from './signUp';
+<<<<<<< HEAD
 import { LargeInput, H2, MediumPrimaryButton, P5, H6 } from '../Generics/Styles';
+=======
+import {LargeInput} from '../Generics/Styles';
+>>>>>>> 3274e52d6b24b44e6bcbdd63eb9a200e1e19acff
 
 
 class LoginPage extends React.Component {
