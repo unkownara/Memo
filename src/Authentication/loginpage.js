@@ -2,7 +2,7 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import Forgot from './forgot.js';
 import Register from './signUp';
-import LargeInput from '../Generics/Styles';
+import {LargeInput} from '../Generics/Styles';
 
 
 class LoginPage extends React.Component {
