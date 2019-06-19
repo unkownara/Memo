@@ -5,14 +5,15 @@ import history from './history';
 import ClubCards from './ClubCards/ClubCards';
 import ClubWall from './ClubWall/ClubWall';
 import NavBar from './Generics/NavBar';
-
 const Login = React.lazy(() => import('./Auth/Login'));
 const Signup = React.lazy(() => import('./Auth/Signup'));
 const Home = React.lazy(() => import('./Home/Home'));
 const AuthLogin = React.lazy(() => import('./Authentication/login'));
 const ForgotPassword = React.lazy(() => import('./Auth/ForgotPassword'));
+const Admin = React.lazy(() => import('./Admin/AdminPage'));
 
 function App() {
+    console.log('env ', process.env.REACT_APP_KEY);
     return (
         <div>
             <React.Suspense fallback={<div>Loading...</div>}>
@@ -46,6 +47,11 @@ function App() {
                             exact
                             path="/club_wall"
                             component={ClubWall}
+                        />
+                        <Route
+                            exact
+                            path="/admin"
+                            component={Admin}
                         />
                     </Switch>
                 </Router>
